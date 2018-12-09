@@ -41,7 +41,7 @@ stages:
 
   # Run integration tests for release candidates
   - name: integration
-    if: type = pull_request AND branch =~ ^release-[\d.]+$
+    if: type = pull_request AND head_branch =~ ^release-[\d.]+$
 
 deploy:
   # Deploy the sdist to PyPI once
