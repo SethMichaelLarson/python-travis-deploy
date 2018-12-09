@@ -41,7 +41,7 @@ stages:
 
   # Run integration tests for release candidates
   - name: integration
-    if: "type = pull_request AND branch =~ /^release-([\d.]+)$/"
+    if: type = pull_request AND branch =~ ^release-[\d.]+$
 
 deploy:
   # Deploy the sdist to PyPI once
@@ -49,7 +49,7 @@ deploy:
     env: PYPI_BUILD=sdist
     script: bash _travis/deploy.sh
     on:
-      env: TOXENV=py36
+      condition: env(TOXENV) = py36
       branch: master
       repo: SethMichaelLarson/python-travis-deploy
       tags: true
